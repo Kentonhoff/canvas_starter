@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Drawing Area</title>
+<!-- You can add your style here rather than in an external style sheet. -->
+<style>
+	canvas {
+	    border:5px solid #d3d3d3;
+	    background-color: #f1f1f1;
+	    display: block;
+	}
+</style>
+</head>
+<body>
+    <!-- DO NOT MODIFY THIS HTML -->
+    <canvas id = "myCanvas" width = "350" height = "500"  ></canvas>
+    <input type = "color" id = "picker"/>
+</body>
+</html>
+
+<script>
+	var canvas = document.querySelector("#myCanvas");
+	/*Find the canvas element and store it to a variable called canvas*/
+	var picker = document.querySelector("#picker");
+	/*Find the picker element and store it to a variable called picker*/
+	var ctx = canvas.getContext("2d");
+	/*Create a drawing object for the canvas. Currently drawing on the canvas element with 2d drawing commands. */
+	canvas.height = window.innerHeight*.8;
+	canvas.width = window.innerWidth*.8;
+	/*Set the Canvas height and width to 80% of the screen width and height*/
+	var color = "red";
+	var drawing = true;
+
+	function draw(x, y){
+		console.log("Currently drawing")
+	if (drawing == true){
+		ctx.beginPath();
+		ctx.arc(x, y, 10, 0, 2 * Math.PI);
+		/*Starting at the coordinates of the mouse, draw a circle with the radius 10
+		and set starting angle to 0 and end angle to 2*Math.PI to create a full circle */
+		ctx.fillStyle = color;
+		ctx.fill();
+
+		}
+	}
+	/*Can't draw circles, have to draw arcs and make them full, half, etc. */
+
+	myCanvas.addEventListener('mousemove', function (e){
+		console.log(e.x);
+		console.log(e.y);
+		/* Want console.log(e) in every function for this hw. */
+		draw(e.x, e.y);
+		/*When moving the mouse over the canvas element,
+		draw a circle at the coordinates of the mouse*/
+
+	})
+
+	window.addEventListener('keydown', function (e){
+		console.log(e);
+		/*Series of if statements to change color, place pen up or down or clear the drawing.
+		keycode 82= r key (Changes drawing color to red)
+		keycode 71= g key (Changes drawing color to green)
+		keycode 66= b key (Changes drawing color to blue)
+		keycode 89= y key (Changes drawing color to yellow)
+		keycode 38 = up key (Stops drawing on canvas)
+		keycode 40 = down key (Resumes drawing on canvas)
+		keycode 32 = space key (Clears the canvas after pressing the space key)
+		*/
+		if (e.keyCode == 82){
+			color = "red"
+			console.log(this)
+		}
+		else if (e.keyCode == 66){
+			color = "blue"
+			console.log(this)
+		}
+		else if (e.keyCode == 71){
+			color = "green"
+			console.log(this)
+		}
+		else if (e.keyCode == 89 ){
+			color = "yellow"
+			console.log(this)
+		}
+		else if (e.keyCode == 38){
+			drawing = false;
+			console.log("pen lifted up")
+		}
+		else if (e.keyCode == 40){
+			drawing = true;
+			console.log("pen placed back down")
+		}
+		else if (e.keyCode == 32){
+			ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height);
+			console.log("Canvas is cleared")
+		}
+	})
+	window.addEventListener("change", function (e){
+	/*Changes color to the value picked in the menu*/
+	console.log(e)
+	color = picker.value;
+	ctx.fillStyle = color;
+	console.log('New color picked')
+})
+
+</script>
