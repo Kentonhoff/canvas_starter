@@ -33,11 +33,11 @@
 	var color = "red";
 	var drawing = true;
 
-	function draw(x, y){
+	function draw(posX, posY){
 		console.log("Currently drawing")
 	if (drawing == true){
 		ctx.beginPath();
-		ctx.arc(x, y, 10, 0, 2 * Math.PI);
+		ctx.arc(posX, posY, 10, 0, 2 * Math.PI);
 		/*Starting at the coordinates of the mouse, draw a circle with the radius 10
 		and set starting angle to 0 and end angle to 2*Math.PI to create a full circle */
 		ctx.fillStyle = color;
