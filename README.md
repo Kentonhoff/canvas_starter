@@ -1,2 +1,2 @@
 # canvas_starter
- file for javascript vcanvas homework
+ file for javascript canvas homework
