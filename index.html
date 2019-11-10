@@ -69,32 +69,32 @@
 		keycode 32 = space key (Clears the canvas after pressing the space key)
 		*/
 		if (e.keyCode == 82){
-			color = "red"
-			console.log(this)
+			color = "red";
+			console.log(this);
 		}
 		else if (e.keyCode == 66){
-			color = "blue"
-			console.log(this)
+			color = "blue";
+			console.log(this);
 		}
 		else if (e.keyCode == 71){
-			color = "green"
-			console.log(this)
+			color = "green";
+			console.log(this);
 		}
 		else if (e.keyCode == 89 ){
-			color = "yellow"
-			console.log(this)
+			color = "yellow";
+			console.log(this);
 		}
 		else if (e.keyCode == 38){
 			drawing = false;
-			console.log("pen lifted up")
+			console.log("pen lifted up");
 		}
 		else if (e.keyCode == 40){
 			drawing = true;
-			console.log("pen placed back down")
+			console.log("pen placed back down");
 		}
 		else if (e.keyCode == 32){
 			ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height);
-			console.log("Canvas is cleared")
+			console.log("Canvas is cleared");
 		}
 	})
 	window.addEventListener("change", function (e){
@@ -102,7 +102,7 @@
 	console.log(e)
 	color = picker.value;
 	ctx.fillStyle = color;
-	console.log('New color picked')
+	console.log('New color picked is '+picker.value)
 })
 
 </script>
